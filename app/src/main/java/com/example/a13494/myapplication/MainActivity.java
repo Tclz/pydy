@@ -14,7 +14,6 @@ import android.provider.MediaStore;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
-import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.PagerAdapter;
@@ -96,15 +95,13 @@ public class MainActivity extends AppCompatActivity
         takePhoto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                //獲取系統版本
+                //获取系统版本
                 int currentapiVersion = android.os.Build.VERSION.SDK_INT;
                 // 激活相机
                 Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
 
-
                 // 判断存储卡是否可以用，可用进行存储
-                if (hasSdcard()) {
+                if (Broadcast.hasSdcard()) {
                     SimpleDateFormat timeStampFormat = new SimpleDateFormat(
                             "yyyy_MM_dd_HH_mm_ss");
                     String filename = timeStampFormat.format(new Date());
@@ -130,7 +127,6 @@ public class MainActivity extends AppCompatActivity
                 }
                 // 开启一个带有返回值的Activity，请求码为PHOTO_REQUEST_CAREMA
                 startActivityForResult(intent, PHOTO_REQUEST_CAREMA);
-
             }
         });
 
@@ -138,10 +134,11 @@ public class MainActivity extends AppCompatActivity
         chooseFromAlbum.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-                    ActivityCompat.requestPermissions(MainActivity.this, new String[]{ Manifest.permission. WRITE_EXTERNAL_STORAGE }, 1);
-                } else {
-                    openAlbum();
+                switch (v.getId()) {
+                    case R.id.choose_from_album:
+                        //打开系统相册方法
+                        openGallery();
+                        break;
                 }
             }
         });
@@ -176,6 +173,7 @@ public class MainActivity extends AppCompatActivity
 
         mViewPaper = (ViewPager) findViewById(R.id.vp);
 
+
         images = new ArrayList<ImageView>();
         for (int i = 0; i < imageIds.length; i++) {
             ImageView imageView = new ImageView(this);
@@ -203,7 +201,6 @@ public class MainActivity extends AppCompatActivity
                 title.setText(titles[position]);
                 dots.get(position).setBackgroundResource(R.drawable.dot);
                 dots.get(oldPosition).setBackgroundResource(R.drawable.dot0);
-
                 oldPosition = position;
                 currentItem = position;
             }
@@ -223,30 +220,6 @@ public class MainActivity extends AppCompatActivity
      * onCreate方法结束
      */
 
-    public static boolean hasSdcard() {
-        return Environment.getExternalStorageState().equals(
-                Environment.MEDIA_MOUNTED);
-    }
-
-    private void openAlbum() {
-        Intent intent = new Intent("android.intent.action.GET_CONTENT");
-        intent.setType("image/*");
-        startActivityForResult(intent, CHOOSE_PHOTO); // 打开相册
-    }
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
-        switch (requestCode) {
-            case 1:
-                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    openAlbum();
-                } else {
-                    Toast.makeText(this, "You denied the permission", Toast.LENGTH_SHORT).show();
-                }
-                break;
-            default:
-        }
-    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -270,8 +243,38 @@ public class MainActivity extends AppCompatActivity
                     }
                 }
                 break;
+            case CHOOSE_PHOTO:
+                if (resultCode == RESULT_OK) {
+                    try {
+                        if(data != null) {
+                            Uri uri = data.getData();
+                            imageUri = uri;
+                        }
+                        Bitmap bitmap = BitmapFactory.decodeStream(getContentResolver()
+                                .openInputStream(imageUri));
+                        picture.setImageBitmap(bitmap);
+                    } catch (FileNotFoundException e) {
+                        e.printStackTrace();
+                    }
+                }
+                break;
+            default:
+                super.onActivityResult(requestCode, resultCode, data);
+                break;
         }
     }
+
+    public void openGallery() {
+        Intent intent = new Intent(Intent.ACTION_PICK);
+        intent.setType("image/*");
+        startActivityForResult(intent, CHOOSE_PHOTO);
+    }
+
+//    private void openAlbum() {
+//        Intent intent = new Intent("android.intent.action.GET_CONTENT");
+//        intent.setType("image/*");
+//        startActivityForResult(intent, CHOOSE_PHOTO); // 打开相册
+//    }
 
     /**
      * 自定义Adapter
@@ -340,8 +343,6 @@ public class MainActivity extends AppCompatActivity
         public void handleMessage(android.os.Message msg) {
             mViewPaper.setCurrentItem(currentItem);
         }
-
-        ;
     };
 
     @Override
