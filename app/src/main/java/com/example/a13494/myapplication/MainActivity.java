@@ -134,12 +134,7 @@ public class MainActivity extends AppCompatActivity
         chooseFromAlbum.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                switch (v.getId()) {
-                    case R.id.choose_from_album:
-                        //打开系统相册方法
-                        openGallery();
-                        break;
-                }
+                openGallery();
             }
         });
 
@@ -246,7 +241,7 @@ public class MainActivity extends AppCompatActivity
             case CHOOSE_PHOTO:
                 if (resultCode == RESULT_OK) {
                     try {
-                        if(data != null) {
+                        if (data != null) {
                             Uri uri = data.getData();
                             imageUri = uri;
                         }
