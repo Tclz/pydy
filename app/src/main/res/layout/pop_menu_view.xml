@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ll_pop_view"
+    android:orientation="vertical"
+    android:background="@drawable/list_color_drawable"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ListView
+        android:id="@+id/list_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </ListView>
+
+    <!--<Button
+        android:id="@+id/pop_menu_camera"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/take_photo"/>
+    <Button
+        android:id="@+id/pop_menu_photo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/choose_picture"/>
+    <Button
+        android:id="@+id/pop_menu_cancel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/cancel"/>-->
+</LinearLayout>

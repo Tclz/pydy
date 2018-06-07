@@ -6,4 +6,27 @@
 
     <string name="action_settings">Settings</string>
     <string name="title_activity_lunbo">lunbo</string>
+    <string name="wechat_name">WechatTheme</string>
+    <string name="title_activity_login">Sign in</string>
+
+    <!-- Strings related to login -->
+    <string name="prompt_telephone">手机号</string>
+    <string name="prompt_password">密码</string>
+    <string name="password_confirm">确认密码</string>
+    <string name="action_sign_in">登录</string>
+    <string name="register"><b></b>创建账号</string>
+    <string name="action_sign_up">注册</string>
+    <string name="already_exist_account"><b>我已有账号</b></string>
+    <string name="get_verify_code">验证码</string>
+    <string name="error_invalid_email">手机号格式错误</string>
+    <string name="error_invalid_password">密码设置过短</string>
+    <string name="error_incorrect_password">密码错误</string>
+    <string name="error_field_required">未填手机号</string>
+    <string name="commit_new_password">提交</string>
+    <string name="input_new_password">新密码</string>
+    <string name="remember_password">记住密码</string>
+    <string name="modifyPwd">忘记密码?</string>
+    <string name="take_photo">拍照</string>
+    <string name="choose_picture">从相册中选择</string>
+    <string name="cancel">取消</string>
 </resources>
