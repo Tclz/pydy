@@ -4,17 +4,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/shot8">
-    <Button
-        android:id="@+id/button_to_main"
+    <ImageView
+        android:id="@+id/start"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="50dp"
-        android:textColor="#FFA500"
-        android:textStyle="bold"
-        android:background="@android:color/transparent"
-        android:textSize="30sp"
-        android:fontFamily="monospace"
-        android:text="进入应用" />
+        android:layout_height="match_parent" />
 
 </RelativeLayout>

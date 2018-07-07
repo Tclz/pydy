@@ -18,7 +18,7 @@
     <string name="action_sign_up">注册</string>
     <string name="already_exist_account"><b>我已有账号</b></string>
     <string name="get_verify_code">验证码</string>
-    <string name="error_invalid_email">手机号格式错误</string>
+    <string name="error_invalid_phone">手机号格式错误</string>
     <string name="error_invalid_password">密码设置过短</string>
     <string name="error_incorrect_password">密码错误</string>
     <string name="error_field_required">未填手机号</string>
@@ -29,4 +29,8 @@
     <string name="take_photo">拍照</string>
     <string name="choose_picture">从相册中选择</string>
     <string name="cancel">取消</string>
+    <string name="upload">确认上传</string>
+    <string name="menu_action_all_down">All down</string>
+    <string name="menu_action_up_down">Up down</string>
+    <string name="menu_action_up_down_stack">Up down stack</string>
 </resources>

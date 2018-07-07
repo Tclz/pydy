@@ -9,7 +9,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".Activity.LoginActivity">
+    tools:context=".activity.LoginActivity">
 
     <!-- Login progress -->
     <ProgressBar
@@ -30,7 +30,7 @@
         <ImageView
             android:layout_margin="20dp"
             android:id="@+id/project_logo"
-            android:src="@drawable/logo"
+            android:src="@drawable/app_logo"
             android:layout_width="wrap_content"
             android:layout_height="120dp" />
     </LinearLayout>
@@ -81,21 +81,6 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-
-                <CheckBox
-                    android:id="@+id/check_box"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="5dp"
-                    android:layout_marginLeft="5dp"/>
-                <TextView
-                    android:textSize="15sp"
-                    android:textStyle="bold"
-                    android:text="@string/remember_password"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-
-
 
             </LinearLayout>
 

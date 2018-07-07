@@ -30,6 +30,10 @@
                 android:id="@+id/nav_send"
                 android:icon="@drawable/ic_menu_send"
                 android:title="发送" />
+            <item
+                android:id="@+id/quit"
+                android:icon="@drawable/quit"
+                android:title="退出"/>
         </menu>
     </item>
 
