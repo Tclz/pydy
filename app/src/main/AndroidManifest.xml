@@ -4,6 +4,7 @@
 
     <!-- Include following permission if you load images from Internet -->
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
     <!-- Include following permission if you want to cache images on SD card -->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CAMERA" />
@@ -29,15 +30,20 @@
     <!-- android:resource="@xml/file_paths" /> -->
     <!-- </provider> -->
     <application
+        android:name="org.litepal.LitePalApplication"
         android:allowBackup="true"
-        android:icon="@mipmap/first"
+        android:icon="@drawable/app_logo"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".Activity.MainActivity"
+            android:name=".activity.MainActivity"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar">
+
+
+
+    </activity>
 
         <provider
             android:name="android.support.v4.content.FileProvider"
@@ -49,22 +55,21 @@
                 android:resource="@xml/file_paths" />
         </provider>
 
-        <activity android:name=".Activity.WechatThemeActivity" />
-        <activity android:name=".Activity.LoginActivity">
-
-        </activity>
-        <activity android:name=".Activity.RegisterActivity" />
-        <activity android:name=".Activity.ShowResultActivity" />
-        <activity android:name=".Activity.DetailActivity" />
-        <activity android:name=".Activity.ForgotPasswordActivity" />
-        <activity android:name=".Activity.WelcomeActivity" />
-        <activity android:name=".Activity.StartActivity">
+        <activity android:name=".activity.WechatThemeActivity" />
+        <activity android:name=".activity.LoginActivity"></activity>
+        <activity android:name=".activity.RegisterActivity" />
+        <activity android:name=".activity.ShowResultActivity" />
+        <activity android:name=".activity.DetailActivity" />
+        <activity android:name=".activity.ForgotPasswordActivity" />
+        <activity android:name=".activity.WelcomeActivity" />
+        <activity android:name=".activity.StartActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".activity.CardStackActivity"></activity>
     </application>
 
 </manifest>
